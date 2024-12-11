@@ -21,6 +21,7 @@ Project generated with ChatGPT o1.
     - [Testing](#testing)
     - [Code Quality](#code-quality)
   - [Bugs](#bugs)
+  - [ToDo](#todo)
 
 ## Features
 
@@ -119,3 +120,9 @@ black . -v
 ## Bugs
 
 - Testing mess with cache file. Running app after tests makes app to contain test data instead of real.
+
+## ToDo
+
+- Add MegaLinter and update pre-commit (as well as documentation)
+- Add Continuous Deployment
+- Fix cache file
