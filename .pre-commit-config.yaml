@@ -1,5 +1,5 @@
 # repos:
-#   - repo: https://github.com/nvuillam/mega-linter
+#   - repo: https://github.com/oxsecurity/megalinter
 #     rev: v5
 #     hooks:
 #       - id: mega-linter

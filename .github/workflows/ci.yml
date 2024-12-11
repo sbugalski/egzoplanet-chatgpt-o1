@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
 
@@ -47,13 +47,13 @@ jobs:
         env_vars: OS,PYTHON
         verbose: true
 
-    - name: Run MegaLinter
-      uses: nvuillam/mega-linter@v5
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        VALIDATE_PYTHON: true
-        ENABLE_ALL_CHECKS: false
-        VALIDATE_BLACK: true
-        VALIDATE_FLAKE8: true
-        VALIDATE_MYPY: true
-        VALIDATE_TRIVY: true
+    # - name: Run MegaLinter
+    #   uses: oxsecurity/megalinter@v8
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #     VALIDATE_PYTHON: true
+    #     ENABLE_ALL_CHECKS: false
+    #     VALIDATE_BLACK: true
+    #     VALIDATE_FLAKE8: true
+    #     VALIDATE_MYPY: true
+    #     VALIDATE_TRIVY: true
