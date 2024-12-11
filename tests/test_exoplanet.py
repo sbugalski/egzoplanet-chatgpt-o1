@@ -1,5 +1,6 @@
 # tests/test_exoplanet_data.py
 
+from pandas import DataFrame
 import pytest
 import pandas as pd
 from unittest.mock import patch
@@ -74,48 +75,48 @@ def test_fetch_exoplanet_data_http_error(mock_exists, mock_get):
         fetch_exoplanet_data("http://dummy_url")
 
 
-def test_filter_exoplanets(sample_df):
+def test_filter_exoplanets(sample_df: DataFrame):
     # Przykład filtrowania masy
     filtered = filter_exoplanets(sample_df, min_mass=1.0, max_mass=5.0)
     assert len(filtered) == 1
     assert filtered.iloc[0]["pl_name"] == "PlanetA"
 
 
-def test_filter_exoplanets_no_filters(sample_df):
+def test_filter_exoplanets_no_filters(sample_df: DataFrame):
     # Bez filtrów, zwracane są wszystkie dane
     filtered = filter_exoplanets(sample_df)
     assert len(filtered) == 3
 
 
-def test_filter_exoplanets_min_mass(sample_df):
+def test_filter_exoplanets_min_mass(sample_df: DataFrame):
     # Filtruj po minimalnej masie
     filtered = filter_exoplanets(sample_df, min_mass=1.0)
     assert len(filtered) == 2
     assert set(filtered["pl_name"]) == {"PlanetA", "PlanetB"}
 
 
-def test_filter_exoplanets_max_mass(sample_df):
+def test_filter_exoplanets_max_mass(sample_df: DataFrame):
     # Filtruj po maksymalnej masie
     filtered = filter_exoplanets(sample_df, max_mass=2.0)
     assert len(filtered) == 2
     assert set(filtered["pl_name"]) == {"PlanetA", "PlanetC"}
 
 
-def test_filter_exoplanets_mass_range(sample_df):
+def test_filter_exoplanets_mass_range(sample_df: DataFrame):
     # Filtruj po zakresie masy
     filtered = filter_exoplanets(sample_df, min_mass=1.0, max_mass=5.0)
     assert len(filtered) == 1
     assert filtered.iloc[0]["pl_name"] == "PlanetA"
 
 
-def test_filter_exoplanets_year_range(sample_df):
+def test_filter_exoplanets_year_range(sample_df: DataFrame):
     # Filtruj po zakresie lat odkrycia
     filtered = filter_exoplanets(sample_df, start_year=2012, end_year=2018)
     assert len(filtered) == 1
     assert filtered.iloc[0]["pl_name"] == "PlanetB"
 
 
-def test_filter_exoplanets_combined_filters(sample_df):
+def test_filter_exoplanets_combined_filters(sample_df: DataFrame):
     # Filtruj po kombinacji filtrów
     filtered = filter_exoplanets(
         sample_df, min_mass=1.0, max_mass=5.0, start_year=2000, end_year=2012
