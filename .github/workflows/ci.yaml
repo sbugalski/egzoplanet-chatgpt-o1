@@ -8,6 +8,10 @@ on:
     branches:
       - main
       - master
+    paths-ignore: : 
+      - "*.md"
+      - "*.yml"
+      - "*.yaml"
 
 jobs:
   build-and-test:
