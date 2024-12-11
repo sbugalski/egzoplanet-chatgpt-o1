@@ -2,8 +2,8 @@
 
 Project generated with ChatGPT o1.
 
-![Build Status](https://github.com/sbugalski/egzoplanet-gpt-o1/actions/workflows/ci.yml/badge.svg)
-![Coverage Status](https://coveralls.io/repos/github/sbugalski/egzoplanet-gpt-o1/badge.svg?branch=main)
+[![Build status](https://github.com/sbugalski/egzoplanet-chatgpt-o1/actions/workflows/ci.yml/badge.svg)](https://github.com/sbugalski/egzoplanet-chatgpt-o1/actions/workflows/ci.yml)
+[![Codecov coverage](https://codecov.io/github/sbugalski/egzoplanet-chatgpt-o1/graph/badge.svg?token=13WNDZIFKO)](https://codecov.io/github/sbugalski/egzoplanet-chatgpt-o1)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 **Exoplanet Explorer** is a comprehensive demo project designed to visualize and explore exoplanet data from the NASA Exoplanet Archive. This application showcases best practices in software development, including robust testing, continuous integration, type checking, and automated documentation.
@@ -71,6 +71,8 @@ Ensure you have the following installed:
 python -m venv venv
 ```
 
+_Windows_:
+
 ```cmd
 .\venv\Scripts\activate
 ```
@@ -98,13 +100,9 @@ Exoplanet Explorer includes unit tests to ensure code reliability.
 1. Run Tests with Coverage:
 
 ```bash
+pip install pytest==7.4.0 pytest-cov==6.0.0
 coverage run -m pytest
 coverage report
-```
-
-1. View Coverage Report:
-
-```bash
 coverage html
 ```
 
@@ -120,4 +118,4 @@ black . -v
 
 ## Bugs
 
-Testing mess cache file, that contains test data instead of real.
+- Testing mess with cache file. Running app after tests makes app to contain test data instead of real.
