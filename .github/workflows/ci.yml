@@ -1,0 +1,54 @@
+# .github/workflows/ci.yml
+
+name: Build
+
+on:
+  push:
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.12"
+
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run Tests with Coverage
+      run: |
+        coverage run -m pytest
+        coverage report
+        coverage xml  # Generates coverage.xml
+
+    - name: Upload Coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: true
+
+    - name: Run MegaLinter
+      uses: nvuillam/mega-linter@v5
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        VALIDATE_PYTHON: true
+        ENABLE_ALL_CHECKS: false
+        VALIDATE_BLACK: true
+        VALIDATE_FLAKE8: true
+        VALIDATE_MYPY: true
+        VALIDATE_TRIVY: true
