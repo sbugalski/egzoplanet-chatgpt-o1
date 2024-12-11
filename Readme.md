@@ -1,6 +1,6 @@
 # Exoplanet Explorer
 
-Project generated with ChatGPT o1.
+Project generated with ChatGPT o1 support.
 
 [![Build status](https://github.com/sbugalski/egzoplanet-chatgpt-o1/actions/workflows/ci.yml/badge.svg)](https://github.com/sbugalski/egzoplanet-chatgpt-o1/actions/workflows/ci.yml)
 [![Codecov coverage](https://codecov.io/github/sbugalski/egzoplanet-chatgpt-o1/graph/badge.svg?token=13WNDZIFKO)](https://codecov.io/github/sbugalski/egzoplanet-chatgpt-o1)
@@ -123,6 +123,7 @@ black . -v
 
 ## ToDo
 
-- Add MegaLinter and update pre-commit (as well as documentation)
+- Add MegaLinter with PRs to branches and update pre-commit (as well as documentation)
 - Add Continuous Deployment
 - Fix cache file
+- Ad Coverage reporting to PRs
