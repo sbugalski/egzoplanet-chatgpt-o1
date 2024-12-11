@@ -4,7 +4,6 @@ name: Build
 
 on:
   pull_request:
-    types: [opened, reopened, closed]
     paths-ignore:
       - "*.md"
       - "*.yml"
