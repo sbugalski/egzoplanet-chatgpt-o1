@@ -16,6 +16,8 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -29,18 +31,21 @@ jobs:
 
     - name: Run Tests with Coverage
       run: |
+        pip install pytest==7.4.0 pytest-cov==6.0.0
         coverage run -m pytest
         coverage report
         coverage xml  # Generates coverage.xml
 
     - name: Upload Coverage to Codecov
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@v5
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage.xml
         flags: unittests
         name: codecov-umbrella
-        fail_ci_if_error: true
+        fail_ci_if_error: false
+        env_vars: OS,PYTHON
+        verbose: true
 
     - name: Run MegaLinter
       uses: nvuillam/mega-linter@v5
