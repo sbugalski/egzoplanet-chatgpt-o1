@@ -5,5 +5,5 @@ pandas==2.2.3
 flake8==7.1.1
 pandas-stubs==2.2.3.241126
 types-pywin32==308.0.0.20250128
-types_requests==2.32.0.20241016
+types_requests==2.32.0.20250301
 black==25.1.0
